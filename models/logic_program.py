@@ -115,47 +115,46 @@ class LogicProgramGenerator:
         for chunk in tqdm(dataset_chunks):
             # create prompt
             full_prompts = [self.prompt_creator[self.dataset_name](example) for example in chunk]
-            print(full_prompts)
-            try:
-                batch_outputs = self.openai_api.batch_generate(full_prompts)
-                print(batch_outputs)
-                sys.exit()
-                # create output
-                for sample, output in zip(chunk, batch_outputs):
-                    programs = [output]
-                    output = {'id': sample['id'], 
-                            'context': sample['context'],
-                            'question': sample['question'], 
-                            'answer': sample['answer'],
-                            'options': sample['options'],
-                            'raw_logic_programs': programs}
-                    outputs.append(output)
-            except:
-                # generate one by one if batch generation fails
-                for sample, full_prompt in zip(chunk, full_prompts):
-                    try:
-                        output = self.openai_api.generate(full_prompt)
-                        programs = [output]
-                        output = {'id': sample['id'], 
-                                'context': sample['context'],
-                                'question': sample['question'], 
-                                'answer': sample['answer'],
-                                'options': sample['options'],
-                                'raw_logic_programs': programs}
-                        outputs.append(output)
-                    except:
-                        print('Error in generating logic programs for example: ', sample['id'])
+            # try:
+            batch_outputs = self.openai_api.batch_generate(full_prompts)
+            print(batch_outputs)
+            sys.exit()
+        #         # create output
+        #         for sample, output in zip(chunk, batch_outputs):
+        #             programs = [output]
+        #             output = {'id': sample['id'], 
+        #                     'context': sample['context'],
+        #                     'question': sample['question'], 
+        #                     'answer': sample['answer'],
+        #                     'options': sample['options'],
+        #                     'raw_logic_programs': programs}
+        #             outputs.append(output)
+        #     except:
+        #         # generate one by one if batch generation fails
+        #         for sample, full_prompt in zip(chunk, full_prompts):
+        #             try:
+        #                 output = self.openai_api.generate(full_prompt)
+        #                 programs = [output]
+        #                 output = {'id': sample['id'], 
+        #                         'context': sample['context'],
+        #                         'question': sample['question'], 
+        #                         'answer': sample['answer'],
+        #                         'options': sample['options'],
+        #                         'raw_logic_programs': programs}
+        #                 outputs.append(output)
+        #             except:
+        #                 print('Error in generating logic programs for example: ', sample['id'])
 
-        # remove examples with duplicate ids from the result
-        outputs = list({output['id']: output for output in outputs}.values())
-        print(f"Generated {len(outputs)} examples.")
+        # # remove examples with duplicate ids from the result
+        # outputs = list({output['id']: output for output in outputs}.values())
+        # print(f"Generated {len(outputs)} examples.")
         
-        # save outputs
-        if not os.path.exists(self.save_path):
-            os.makedirs(self.save_path)
+        # # save outputs
+        # if not os.path.exists(self.save_path):
+        #     os.makedirs(self.save_path)
         
-        with open(os.path.join(self.save_path, f'{self.dataset_name}_{self.split}_{self.model_name}.json'), 'w') as f:
-            json.dump(outputs, f, indent=2, ensure_ascii=False)
+        # with open(os.path.join(self.save_path, f'{self.dataset_name}_{self.split}_{self.model_name}.json'), 'w') as f:
+        #     json.dump(outputs, f, indent=2, ensure_ascii=False)
 
 def parse_args():
     parser = argparse.ArgumentParser()
