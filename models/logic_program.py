@@ -117,16 +117,16 @@ class LogicProgramGenerator:
             full_prompts = [self.prompt_creator[self.dataset_name](example) for example in chunk]
             # try:
             batch_outputs = self.openai_api.batch_generate(full_prompts)
-                # create output
-                for sample, output in zip(chunk, batch_outputs):
-                    programs = [output]
-                    output = {'id': sample['id'], 
-                            'context': sample['context'],
-                            'question': sample['question'], 
-                            'answer': sample['answer'],
-                            'options': sample['options'],
-                            'raw_logic_programs': programs}
-                    outputs.append(output)
+            # create output
+            for sample, output in zip(chunk, batch_outputs):
+                programs = [output]
+                output = {'id': sample['id'], 
+                        'context': sample['context'],
+                        'question': sample['question'], 
+                        'answer': sample['answer'],
+                        'options': sample['options'],
+                        'raw_logic_programs': programs}
+                outputs.append(output)
             except:
                 # generate one by one if batch generation fails
                 for sample, full_prompt in zip(chunk, full_prompts):
