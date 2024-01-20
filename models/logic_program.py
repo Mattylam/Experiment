@@ -168,9 +168,13 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-    # Step 1: Grab Arguments
-    # Step 2 : Load Prompt Template
+    # Step 1: Grab Arguments and define the method
     l = LogicProgramGenerator(args)
-    print(l.prompt_template)
+    # Step 2 : Load Prompt Template
+    #print(l.prompt_template)
+    # Step 3: Load Test dataset
+    # Step 3.1 Raw dataset
+    raw_dataset = l.load_raw_dataset(l.split)
+    print(raw_dataset[0:10])
     # logic_program_generator = LogicProgramGenerator(args)
     # logic_program_generator.batch_logic_program_generation()
