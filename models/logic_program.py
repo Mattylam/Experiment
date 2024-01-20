@@ -7,6 +7,7 @@ from collections import OrderedDict
 from typing import Dict, List, Tuple
 from utils import OpenAIModel
 import argparse
+import sys
 
 class LogicProgramGenerator:
     def __init__(self, args):
@@ -114,8 +115,11 @@ class LogicProgramGenerator:
         for chunk in tqdm(dataset_chunks):
             # create prompt
             full_prompts = [self.prompt_creator[self.dataset_name](example) for example in chunk]
+            print(full_prompts)
             try:
                 batch_outputs = self.openai_api.batch_generate(full_prompts)
+                print(batch_outputs)
+                sys.exit()
                 # create output
                 for sample, output in zip(chunk, batch_outputs):
                     programs = [output]
@@ -176,6 +180,6 @@ if __name__ == '__main__':
     # Step 3.1 Raw dataset
     print("Step 3.1")
     raw_dataset = l.load_raw_dataset(l.split)
-    print(raw_dataset[0:10])
+    print(len(raw_dataset ))
     # logic_program_generator = LogicProgramGenerator(args)
     # logic_program_generator.batch_logic_program_generation()
