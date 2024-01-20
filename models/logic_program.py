@@ -115,7 +115,7 @@ class LogicProgramGenerator:
         for chunk in tqdm(dataset_chunks):
             # create prompt
             full_prompts = [self.prompt_creator[self.dataset_name](example) for example in chunk]
-            # try:
+            try:
             batch_outputs = self.openai_api.batch_generate(full_prompts)
             # create output
             for sample, output in zip(chunk, batch_outputs):
