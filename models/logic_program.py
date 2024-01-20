@@ -169,10 +169,8 @@ def parse_args():
 if __name__ == '__main__':
     args = parse_args()
     # Step 1: Grab Arguments
-
     # Step 2 : Load Prompt Template
     l = LogicProgramGenerator(args)
-     print(l.prompt_template)
-
+    print(l.prompt_template)
     # logic_program_generator = LogicProgramGenerator(args)
     # logic_program_generator.batch_logic_program_generation()
