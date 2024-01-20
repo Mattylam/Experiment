@@ -178,8 +178,10 @@ if __name__ == '__main__':
     #print(l.prompt_template)
     # Step 3: Load Test dataset
     # Step 3.1 Raw dataset
-    print("Step 3.1")
+    # Step 4 Load dataset and generate translation
+    print("Step 3.2 ")
     raw_dataset = l.load_raw_dataset(l.split)
-    print(len(raw_dataset ))
+    print(len(raw_dataset))
+    l.batch_logic_program_generation()
     # logic_program_generator = LogicProgramGenerator(args)
     # logic_program_generator.batch_logic_program_generation()
