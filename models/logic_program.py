@@ -174,6 +174,7 @@ if __name__ == '__main__':
     #print(l.prompt_template)
     # Step 3: Load Test dataset
     # Step 3.1 Raw dataset
+    print("Step 3.1")
     raw_dataset = l.load_raw_dataset(l.split)
     print(raw_dataset[0:10])
     # logic_program_generator = LogicProgramGenerator(args)
