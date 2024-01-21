@@ -56,8 +56,11 @@ class LogicProgramGenerator:
     def prompt_proofwriter(self, test_data):
         problem = test_data['context']
         question = test_data['question'].strip()
-        print(self.split)
-        print(question[0:5])
+        if self.split == "proofd5_test":
+            print("add something")
+        print(question)
+        print(type(problem))
+        print(type(question))
         full_prompt = self.prompt_template.replace('[[PROBLEM]]', problem).replace('[[QUESTION]]', question)
         return full_prompt
     
