@@ -70,22 +70,6 @@ class LogicProgramGenerator:
     def load_raw_dataset(self, split):
         with open(os.path.join(self.data_path, self.dataset_name, f'{split}.json')) as f:
             raw_dataset = json.load(f)
-        # change dataset for proofwriterd5
-        if self.split == "proofd5_test":
-            for d in raw_dataset:   
-              d['question'] = d['question'].strip()
-              # if proofd5
-              # Join the problem list together
-              d['context'] = ' '.join(d['context'])
-              # Add to Question
-              q = 'Based on the above information, is the following statement true, false, or unknown? '
-              d['question'] = q + d['question']
-              d['options'] = ['A) True', 'B) False', 'C) Unknown']
-              if d['label'] == True:
-                d['answer'] = 'A'
-              else:
-                d['answer'] = 'B'
-              d.pop('label')
         return raw_dataset
 
     def logic_program_generation(self):
