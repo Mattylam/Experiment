@@ -99,6 +99,9 @@ class LogicProgramGenerator:
 
         # save outputs        
         with open(os.path.join(self.save_path, f'{self.dataset_name}_{self.split}_{self.model_name}.json'), 'w') as f:
+            a = '{self.dataset_name}_{self.split}_{self.model_name}.json'
+            print(self.save_path)
+            print('{self.dataset_name}_{self.split}_{self.model_name}.json')
             json.dump(outputs, f, indent=2, ensure_ascii=False)
 
     '''
