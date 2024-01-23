@@ -108,6 +108,8 @@ class LogicProgramGenerator:
         # load raw dataset
         raw_dataset = self.load_raw_dataset(self.split)
         print(f"Loaded {len(raw_dataset)} examples from {self.split} split.")
+        print(self.save_path)
+        print('{self.dataset_name}_{self.split}_{self.model_name}.json')
 
         outputs = []
         # split dataset into chunks
@@ -148,8 +150,6 @@ class LogicProgramGenerator:
         print(f"Generated {len(outputs)} examples.")
         
         # save outputs
-        print(self.save_path)
-        print('{self.dataset_name}_{self.split}_{self.model_name}.json')
         if not os.path.exists(self.save_path):
             os.makedirs(self.save_path)
         
