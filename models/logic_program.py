@@ -99,9 +99,6 @@ class LogicProgramGenerator:
 
         # save outputs        
         with open(os.path.join(self.save_path, f'{self.dataset_name}_{self.split}_{self.model_name}.json'), 'w') as f:
-            a = '{self.dataset_name}_{self.split}_{self.model_name}.json'
-            print(self.save_path)
-            print('{self.dataset_name}_{self.split}_{self.model_name}.json')
             json.dump(outputs, f, indent=2, ensure_ascii=False)
 
     '''
@@ -151,6 +148,8 @@ class LogicProgramGenerator:
         print(f"Generated {len(outputs)} examples.")
         
         # save outputs
+        print(self.save_path)
+        print('{self.dataset_name}_{self.split}_{self.model_name}.json')
         if not os.path.exists(self.save_path):
             os.makedirs(self.save_path)
         
