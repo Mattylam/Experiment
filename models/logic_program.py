@@ -83,7 +83,7 @@ class LogicProgramGenerator:
             try:
                 full_prompt = self.prompt_creator[self.dataset_name](example)
                 output = self.openai_api.generate(full_prompt)
-                print(full_prompt)
+                #print(full_prompt)
                 programs = [output]
 
                 # create output
