@@ -314,7 +314,7 @@ Green(Harry, False) ::: Harry is not green."""
     print(count)
 
     print("Executable")
-    print(Exec)
+    print(Exece)
 
     complied_krb_dir = './compiled_krb'
     if os.path.exists(complied_krb_dir):
