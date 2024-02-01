@@ -83,7 +83,7 @@ class LogicProgramGenerator:
             try:
                 full_prompt = self.prompt_creator[self.dataset_name](example)
                 output = self.openai_api.generate(full_prompt)
-                # print(full_prompt)
+                print(full_prompt)
                 programs = [output]
 
                 # create output
@@ -177,6 +177,6 @@ if __name__ == '__main__':
     # Step 3: Load Test dataset
     # Step 3.1 Raw dataset
     # Step 4 Load dataset and generate translation
-    print("Logic_LM use SatLM Proofwriter dataset ")
+    print("Logic_LM New Experiment ")
     logic_program_generator = LogicProgramGenerator(args)
-    logic_program_generator.batch_logic_program_generation()
+    logic_program_generator.logic_program_generation()
