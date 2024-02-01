@@ -24,7 +24,7 @@ The squirrel is young.
 The squirrel visits the lion. 
 The squirrel visits the mouse.
 Question:
-"Based on the above information, is the following statement true or false? The lion is red.
+Based on the above information, is the following statement true or false? The lion is red.
 ###
 Predicates:
 Sees($x, $y) ::: Does x see y?
