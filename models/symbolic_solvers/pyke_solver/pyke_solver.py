@@ -273,27 +273,35 @@ Green(Harry, False) ::: Harry is not green."""
     logic_program9 =  "Predicates:\nGreen($x, bool) ::: Is x green?\nWhite($x, bool) ::: Is x white?\nBlue($x, bool) ::: Is x blue?\nCold($x, bool) ::: Is x cold?\nNice($x, bool) ::: Is x nice?\nKind($x, bool) ::: Is x kind?\nYoung($x, bool) ::: Is x young?\n\nFacts:\nGreen(Dave, True) ::: Dave is green.\nWhite(Dave, True) ::: Dave is white.\nBlue(Dave, True) ::: Dave is blue.\nCold(Dave, True) ::: Dave is cold.\nGreen($x, True) >>> Nice($x, True) ::: If something is green then it is nice.\nBlue($x, True) && Cold($x, True) >>> Green($x, True) ::: If something is blue and cold then it is green.\nWhite($x, True) && Young($x, True) >>> Kind($x, True) ::: If something is white and young then it is kind.\nCold($x, True) >>> Blue($x, True) ::: If something is cold then it is blue.\nNice($x, True) && Kind($x, True) >>> Green($x, True) ::: All nice, kind things are green.\nKind($x, True) && Cold($x, True) >>> White($x, True) ::: All kind, cold things are white.\nKind($x, True) && Young($x, True) >>> Cold($x, True) ::: If something is kind and young then it is cold.\n\nQuery:\nNice(Charlie, False) ::: Charlie is not nice."
     # tests = [logic_program1, logic_program2, logic_program3, logic_program4, logic_program5, logic_program6]
 
-    tests = [logic_program2, logic_program8, logic_program9]
+    #tests = [logic_program2, logic_program8, logic_program9]
+    tests = []
     # Make changes to the SatLM ProofWriter file
     import json
     with open('/content/Experiment/outputs/logic_programs/ProofWriter_proofd5_test_gpt-3.5-turbo.json') as f:
       translation = json.load(f)
-    
+    answer = []
     
     #one_translation = translation[0]["raw_logic_programs"][0]
     for i in range(len(translation)):
         one_translation = translation[i]["raw_logic_programs"][0]
+        one_answer = translation[i]["answer"][0]
         tests.append(one_translation)
-    for test in tests:
+        answer.append(one_answer)
+    for idx, test in enumerate(tests):
         pyke_program = Pyke_Program(test, 'ProofWriter')
         print(pyke_program.flag)
         print(pyke_program.Rules)
         print(pyke_program.Facts)
         print(pyke_program.Query)
         print(pyke_program.Predicates)
+        print(answer[idx])
 
         result, error_message = pyke_program.execute_program()
         print(result)
+        count = 0
+        if answer[idx] == result:
+            print('Correct')
+            count += 1
         print(error_message)
 
     complied_krb_dir = './compiled_krb'
