@@ -274,7 +274,16 @@ Green(Harry, False) ::: Harry is not green."""
     # tests = [logic_program1, logic_program2, logic_program3, logic_program4, logic_program5, logic_program6]
 
     tests = [logic_program2, logic_program8, logic_program9]
+    # Make changes to the SatLM ProofWriter file
+    import json
+    with open('/content/Experiment/outputs/logic_programs/ProofWriter_proofd5_test_gpt-3.5-turbo.json') as f:
+      translation = json.load(f)
     
+    
+    #one_translation = translation[0]["raw_logic_programs"][0]
+    for i in range(len(translation)):
+        one_translation = translation[i]["raw_logic_programs"][0]
+        test.append(one_translation)
     for test in tests:
         pyke_program = Pyke_Program(test, 'ProofWriter')
         print(pyke_program.flag)
