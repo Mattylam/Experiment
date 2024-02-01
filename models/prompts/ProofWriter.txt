@@ -71,6 +71,58 @@ Query:
 Red(lion, True) ::: The lion is red.
 ------
 Problem:
+If someone is furry then they are blue. 
+If someone is furry and nice then they are green. 
+If someone is smart then they are quiet. Nice, blue people are furry. 
+Blue, furry people are nice. 
+Green, smart people are furry. 
+If Charlie is quiet then Charlie is furry. 
+All big, blue people are green. 
+All blue people are smart. 
+Anne is furry. 
+Anne is green. 
+Anne is nice. 
+Anne is quiet. 
+Charlie is smart. 
+Dave is blue. 
+Dave is nice. 
+Fiona is blue. 
+Fiona is furry. 
+Fiona is smart.
+Question: Based on the above information, is the following statement true or false? Charlie is not furry.
+###
+Predicates:
+Furry($x, bool) ::: Is x furry?
+Blue($x, bool) ::: Is x blue?
+Nice($x, bool) ::: Is x nice?
+Green($x, bool) ::: Is x green?
+Smart($x, bool) ::: Is x smart?
+Quiet($x, bool) ::: Is x quiet?
+Big($x, bool) ::: Is x big?
+Facts:
+Furry($x, True) >>> Blue($x, True) ::: If someone is furry then they are blue.
+Furry($x, True) && Nice($x, True) >>> Green($x, True) ::: If someone is furry and nice then they are green.
+Smart($x, True) >>> Quiet($x, True) ::: If someone is smart then they are quiet.
+Nice($x, True) && Blue($x, True) >>> Furry($x, True) ::: Nice, blue people are furry.
+Blue($x, True) && Furry($x, True) >>> Nice($x, True) ::: Blue, furry people are nice.
+Green($x, True) && Smart($x, True) >>> Furry($x, True) ::: Green, smart people are furry.
+Quiet(Charlie, True) >>> Furry(Charlie, True) ::: If Charlie is quiet then Charlie is furry.
+Big($x, True) && Blue($x, True) >>> Green($x, True) ::: All big, blue people are green.
+Blue($x, True) >>> Smart($x, True) ::: All blue people are smart.
+Furry(Anne, True) ::: Anne is furry.
+Blue(Anne, True) ::: Anne is blue.
+Nice(Anne, True) ::: Anne is nice.
+Quiet(Anne, True) ::: Anne is quiet.
+Smart(Charlie, True) ::: Charlie is smart.
+Blue(Dave, True) ::: Dave is blue.
+Nice(Dave, True) ::: Dave is nice.
+Blue(Fiona, True) ::: Fiona is blue.
+Furry(Fiona, True) ::: Fiona is furry.
+Smart(Fiona, True) ::: Fiona is smart.
+Query:
+Furry(Charlie, False) ::: Charlie is not furry.
+------
+Problem:
 [[PROBLEM]]
 Question:
 [[QUESTION]]
