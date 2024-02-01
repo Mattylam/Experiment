@@ -304,6 +304,9 @@ Green(Harry, False) ::: Harry is not green."""
             count += 1
         print(error_message)
 
+    print("count")
+    print(count)
+
     complied_krb_dir = './compiled_krb'
     if os.path.exists(complied_krb_dir):
         print('removing compiled_krb')
