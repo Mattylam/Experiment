@@ -287,10 +287,14 @@ Green(Harry, False) ::: Harry is not green."""
         one_answer = translation[i]["answer"][0]
         tests.append(one_translation)
         answer.append(one_answer)
+    count = 0
+    Exece = 0
     for idx, test in enumerate(tests):
         pyke_program = Pyke_Program(test, 'ProofWriter')
         print("Executable:")
         print(pyke_program.flag)
+        if pyke_program.flag:
+            Exece += 1
         print(pyke_program.Rules)
         print(pyke_program.Facts)
         print(pyke_program.Query)
@@ -301,7 +305,6 @@ Green(Harry, False) ::: Harry is not green."""
         result, error_message = pyke_program.execute_program()
         print("Predicted Answers")
         print(result)
-        count = 0
         if answer[idx] == result:
             print('Correct')
             count += 1
@@ -309,6 +312,9 @@ Green(Harry, False) ::: Harry is not green."""
 
     print("count")
     print(count)
+
+    print("Executable")
+    print(Exec)
 
     complied_krb_dir = './compiled_krb'
     if os.path.exists(complied_krb_dir):
