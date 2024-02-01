@@ -283,7 +283,7 @@ Green(Harry, False) ::: Harry is not green."""
     #one_translation = translation[0]["raw_logic_programs"][0]
     for i in range(len(translation)):
         one_translation = translation[i]["raw_logic_programs"][0]
-        test.append(one_translation)
+        tests.append(one_translation)
     for test in tests:
         pyke_program = Pyke_Program(test, 'ProofWriter')
         print(pyke_program.flag)
