@@ -289,14 +289,17 @@ Green(Harry, False) ::: Harry is not green."""
         answer.append(one_answer)
     for idx, test in enumerate(tests):
         pyke_program = Pyke_Program(test, 'ProofWriter')
+        print("Executable:")
         print(pyke_program.flag)
         print(pyke_program.Rules)
         print(pyke_program.Facts)
         print(pyke_program.Query)
         print(pyke_program.Predicates)
+        print("True Answer is")
         print(answer[idx])
 
         result, error_message = pyke_program.execute_program()
+        print("Predicted Answers")
         print(result)
         count = 0
         if answer[idx] == result:
