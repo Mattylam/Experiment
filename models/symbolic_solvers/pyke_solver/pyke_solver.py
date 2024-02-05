@@ -317,15 +317,16 @@ Green(Harry, False) ::: Harry is not green."""
     # print(Exece)
 
     for test in tests:
-    pyke_program = Pyke_Program(test, 'ProofWriter')
-    print(pyke_program.flag)
-    # print(pyke_program.Rules)
-    # print(pyke_program.Facts)
-    # print(pyke_program.Query)
-    # print(pyke_program.Predicates)
-
-    result, error_message = pyke_program.execute_program()
-    print(result)
+        pyke_program = Pyke_Program(test, 'ProofWriter')
+        print(pyke_program.flag)
+        # print(pyke_program.Rules)
+        # print(pyke_program.Facts)
+        # print(pyke_program.Query)
+        # print(pyke_program.Predicates)
+    
+        result, error_message = pyke_program.execute_program()
+        print(result)
+        print(error_message)
 
     complied_krb_dir = './compiled_krb'
     if os.path.exists(complied_krb_dir):
