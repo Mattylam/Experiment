@@ -148,6 +148,7 @@ class Pyke_Program:
         # absolute_path = os.path.abspath(complied_krb_dir)
         # print(absolute_path)
         try:
+            print(self.cache_dir)
             engine = knowledge_engine.engine(self.cache_dir)
             engine.reset()
             engine.activate('rules')
