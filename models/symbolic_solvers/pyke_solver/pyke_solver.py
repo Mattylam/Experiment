@@ -158,6 +158,7 @@ class Pyke_Program:
             result = self.check_specific_predicate(subject, predicate, engine)
             answer = self.answer_map[self.dataset_name](result, value_to_check)
         except Exception as e:
+            print(e)
             return None, e
         
         return answer, ""
