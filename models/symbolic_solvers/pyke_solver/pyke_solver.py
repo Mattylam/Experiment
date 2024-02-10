@@ -9,6 +9,8 @@ class Pyke_Program:
         self.dataset_name = dataset_name
         
         # create the folder to save the Pyke program
+        a = os.path.dirname(__file__)
+        print(a)
         cache_dir = os.path.join(os.path.dirname(__file__), '.cache_program')
         if not os.path.exists(cache_dir):
             os.makedirs(cache_dir)
