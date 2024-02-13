@@ -152,6 +152,7 @@ class Pyke_Program:
         try:
             print(self.cache_dir)
             engine = knowledge_engine.engine(self.cache_dir)
+            print("Not Engine error")
             engine.reset()
             engine.activate('rules')
             engine.get_kb('facts')
