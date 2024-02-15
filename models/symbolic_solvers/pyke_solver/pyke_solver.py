@@ -150,9 +150,7 @@ class Pyke_Program:
         # absolute_path = os.path.abspath(complied_krb_dir)
         # print(absolute_path)
         try:
-            print(self.cache_dir)
             engine = knowledge_engine.engine(self.cache_dir)
-            print("Not Engine error")
             engine.reset()
             engine.activate('rules')
             engine.get_kb('facts')
@@ -162,7 +160,6 @@ class Pyke_Program:
             result = self.check_specific_predicate(subject, predicate, engine)
             answer = self.answer_map[self.dataset_name](result, value_to_check)
         except Exception as e:
-            print(e)
             return None, e
         
         return answer, ""
