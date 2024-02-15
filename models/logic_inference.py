@@ -72,6 +72,7 @@ class LogicInferenceEngine:
                     'question': example['question'], 
                     'answer': example['answer'],
                     'flag': flag,
+                    'Error Message': error_message,
                     'predicted_answer': answer}
             outputs.append(output)
         
